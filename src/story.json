@@ -10,7 +10,7 @@
     },
     "no": {
       "money": 0,
-      "staff": 10,
+      "staff": -15,
       "law": 0,
       "fame": 0
     }
