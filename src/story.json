@@ -1,0 +1,210 @@
+[
+  {
+    "title": "Dangerous Stranger",
+    "description": "A stranger enters the saloon demanding a free drink while making sure to display the polished sixshooter at his hip.",
+    "yes": {
+      "money": -5,
+      "staff": -5,
+      "law": -10,
+      "fame": 0
+    },
+    "no": {
+      "money": 0,
+      "staff": 10,
+      "law": 0,
+      "fame": 0
+    }
+  },
+  {
+    "title": "Music Group",
+    "description": "A group of musicians enters the saloon and offers to entertain the guests if you pay them.",
+    "yes": {
+      "money": -10,
+      "staff": 0,
+      "law": 0,
+      "fame": 10
+    },
+    "no": {
+      "money": 0,
+      "staff": 0,
+      "law": 0,
+      "fame": 0
+    }
+  },
+  {
+    "title": "Gold Miner's Luck",
+    "description": "A gold miner, fresh from the mountains, stumbles in with a big grin and a bag full of gold dust. He offers to buy a round for the entire saloon.",
+    "yes": {
+      "money": 20,
+      "staff": -5,
+      "law": -5,
+      "fame": 10
+    },
+    "no": {
+      "money": 0,
+      "staff": 0,
+      "law": 5,
+      "fame": -5
+    }
+  },
+  {
+    "title": "Traveling Salesman",
+    "description": "A slick salesman offers to sell you a crate of 'miracle tonic' that he claims will bring in customers.",
+    "yes": {
+      "money": -10,
+      "staff": 0,
+      "law": -10,
+      "fame": 20
+    },
+    "no": {
+      "money": 0,
+      "staff": 0,
+      "law": 0,
+      "fame": -5
+    }
+  },
+  {
+    "title": "Piano Player's Pay Raise",
+    "description": "Your loyal piano player asks for a raise, saying his tunes bring life to the saloon.",
+    "yes": {
+      "money": -5,
+      "staff": 10,
+      "law": 0,
+      "fame": 5
+    },
+    "no": {
+      "money": 0,
+      "staff": -10,
+      "law": 0,
+      "fame": -5
+    }
+  },
+  {
+    "title": "Wanted Poster",
+    "description": "The sheriff wants to pin a wanted poster at the entrance, warning that a notorious outlaw may be in town.",
+    "yes": {
+      "money": 0,
+      "staff": 0,
+      "law": 10,
+      "fame": -5
+    },
+    "no": {
+      "money": 0,
+      "staff": 0,
+      "law": -10,
+      "fame": 5
+    }
+  },
+  {
+    "title": "Ladies' Night",
+    "description": "Your bartender suggests a 'ladies' night' to bring in more business, but some regulars might take issue.",
+    "yes": {
+      "money": 10,
+      "staff": -5,
+      "law": 0,
+      "fame": -10
+    },
+    "no": {
+      "money": 0,
+      "staff": 0,
+      "law": 0,
+      "fame": 0
+    }
+  },
+  {
+    "title": "Brawl Breaks Out",
+    "description": "Two drunken cowboys start a fight. Stopping it could prevent damage, but might be risky.",
+    "yes": {
+      "money": -5,
+      "staff": -10,
+      "law": 5,
+      "fame": 0
+    },
+    "no": {
+      "money": -10,
+      "staff": 0,
+      "law": -5,
+      "fame": -5
+    }
+  },
+  {
+    "title": "Broken Furniture",
+    "description": "Despite your intervention, the fight left some tables and chairs broken. Will you charge the fighters for the damages?",
+    "yes": {
+      "money": 5,
+      "staff": 0,
+      "law": 5,
+      "fame": -5
+    },
+    "no": {
+      "money": -5,
+      "staff": 5,
+      "law": -5,
+      "fame": 5
+    }
+  },
+  {
+    "title": "Rowdy Crowd",
+    "description": "Ladies’ Night is a big hit, but a group of rowdy cowboys starts causing trouble. Kick them out?",
+    "yes": {
+      "money": -5,
+      "staff": 5,
+      "law": 5,
+      "fame": 5
+    },
+    "no": {
+      "money": -10,
+      "staff": -5,
+      "law": -5,
+      "fame": -5
+    }
+  },
+  {
+    "title": "Outlaw Spotted",
+    "description": "A patron suspects an outlaw matching the poster’s description. Do you quietly tip off the sheriff?",
+    "yes": {
+      "money": 0,
+      "staff": 0,
+      "law": 10,
+      "fame": -5
+    },
+    "no": {
+      "money": 0,
+      "staff": 5,
+      "law": -5,
+      "fame": 5
+    }
+  },
+  {
+    "title": "Piano Player's Encore",
+    "description": "The piano player now attracts a dedicated crowd every night, and he asks if you’d like him to play later hours.",
+    "yes": {
+      "money": 10,
+      "staff": 10,
+      "law": -5,
+      "fame": 10
+    },
+    "no": {
+      "money": 0,
+      "staff": 0,
+      "law": 5,
+      "fame": 0
+    }
+  },
+  {
+    "title": "Miracle Tonic Disappointment",
+    "description": "Customers realize the miracle tonic is just water with a dash of sugar. Some feel cheated and threaten to spread word.",
+    "yes": {
+      "money": 0,
+      "staff": -5,
+      "law": 0,
+      "fame": -10
+    },
+    "no": {
+      "money": 0,
+      "staff": 5,
+      "law": 5,
+      "fame": -5
+    }
+  }
+]
