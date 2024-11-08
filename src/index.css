@@ -1,0 +1,29 @@
+@font-face {
+  font-family: barbaro;
+  src: url(./barbaro.ttf);
+}
+
+@font-face {
+  font-family: staubach;
+  src: url(./staubach.ttf);
+}
+
+html, body {
+  background-color: #131111;
+  color: white;
+  font-family: staubach;
+}
+
+svg {
+  fill: white;
+  width: 64px;
+  height: 64px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: barbaro;
+}
+
+body {
+  padding: 1rem 2rem;
+}

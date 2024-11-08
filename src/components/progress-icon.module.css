@@ -1,0 +1,20 @@
+.progressIcon {
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+
+.positioner {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.foreground {
+    overflow: hidden;
+}
+
+.foreground svg {
+    fill: #5a5050;
+}
+
