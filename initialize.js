@@ -33,7 +33,6 @@ export class Application {
         this.systemMessage = fs.readFileSync('./chat-gpt.system', 'utf8');
         this.systemMessage = this.systemMessage.replace('<imageList>', JSON.stringify(imageDescriptions));
         this.systemMessage = this.systemMessage.replace('<eventList>', JSON.stringify(this.basicEvents));
-        console.log('System-Message', this.systemMessage);
         this.isReady = true;
         this.callbackQueue.forEach((item) => {
             item();
