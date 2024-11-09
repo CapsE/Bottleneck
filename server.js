@@ -2,12 +2,14 @@ import 'dotenv/config';
 import express from 'express';
 import {MongoClient} from 'mongodb';
 import cors from 'cors';
+import {getFromChatGPT} from "./getFromChatGPT.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017';
 const dbName = process.env.DB_NAME || 'bottleneck';
 let db;
+
 
 // Connect to MongoDB
 MongoClient.connect(mongoUri, {useUnifiedTopology: true})
@@ -47,6 +49,19 @@ app.get('/random-event', async (req, res) => {
         res.status(500).json({error: 'Internal Server Error'});
     }
 });
+
+app.get('/test', async (req, res) => {
+    res.json(await getFromChatGPT("write a basic event for the game"));
+});
+
+app.get('/test2', async (req, res) => {
+    res.json(await getFromChatGPT("write a creative event for the game"));
+});
+
+app.get('/test3', async (req, res) => {
+    res.json(await getFromChatGPT("write an event for the game while the natives in the area prepare for war"));
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
