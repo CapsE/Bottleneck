@@ -21,10 +21,12 @@ When you are asked to generate an event you'll answer with a JSON in this format
       "law": 0,
       "fame": -10
     },
+    "yesDescription": "The 'ladies' night' is a great success but your staff is exhausted after a especially hard shift and your regulars didn't like having to drink somewhere else for a night.",
     "no": {
       "money": 0,
       "staff": 0,
       "law": 0,
       "fame": 0
-    }
+    },
+    "noDescription": "You don't want to upset your regulars. Things are good as they are right now."
 }

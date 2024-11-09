@@ -6,14 +6,11 @@ import Money from './icons/money-stack.svg?react';
 import Law from './icons/law-star.svg?react';
 import Staff from './icons/person.svg?react';
 import Fame from './icons/star-struck.svg?react';
+import Music from './icons/musical-score.svg?react';
 
 import {state} from './state';
 import {imageDescriptions} from "./imageList.js";
-import {useState} from "react";
-import { sound } from '@pixi/sound';
-
-sound.add('my-sound', '/TheEntertainer.ogg');
-sound.play('my-sound');
+import {useRef, useState} from "react";
 
 const GameOver = ({message}) => <>
     <h1>Game Over</h1>
@@ -22,10 +19,15 @@ const GameOver = ({message}) => <>
 
 const App = observer(() => {
     const [loading, setLoading] = useState(false);
+    const [outcome, setOutcome] = useState(null);
+    const [lastImage, setLastImage] = useState(null);
+    const audioRef = useRef();
     const active = state.active;
 
     const handleYes = () => {
         state.updateValues(active.yes);
+        setOutcome(active.yesDescription);
+        setLastImage(active.image);
         setLoading(true);
         state.next().then(() => {
             setLoading(false);
@@ -34,13 +36,28 @@ const App = observer(() => {
 
     const handleNo = () => {
         state.updateValues(active.no);
+        setOutcome(active.noDescription);
+        setLastImage(active.image);
         setLoading(true);
         state.next().then(() => {
             setLoading(false);
         });
     }
 
-    let imageId = imageDescriptions.indexOf(active.image);
+    const handleOutcome = () => {
+        setOutcome(null);
+        setLastImage(null);
+    }
+
+    const toggleMusic = () => {
+        if(audioRef.current.paused) {
+            audioRef.current.play();
+            return;
+        }
+        audioRef.current.pause();
+    }
+
+    let imageId = imageDescriptions.indexOf(outcome ? lastImage : active.image);
     imageId = imageId === -1 ? 0 : imageId;
 
     if (state.fame <= 0) {
@@ -68,14 +85,26 @@ const App = observer(() => {
         return <GameOver message="Too much law" />
     }
     return (
-        <>
+        <div className={styles.app}>
+            <div className={styles.hidden}>
+                <audio ref={audioRef} loop={true}>
+                    <source src="/TheEntertainer.ogg" type="audio/ogg"/>
+                </audio>
+            </div>
+            <div className={styles.menu}>
+                <Music onClick={toggleMusic}/>
+            </div>
             <div className={styles.content}>
                 <h1>{active.title}</h1>
                 <img className={styles.image} src={`/images/${imageId}.png`}/>
-                <p>{active.description}</p>
+                <p>{outcome ? outcome : active.description}</p>
                 <div className={styles.btnWrapper}>
-                    <button disabled={loading} className={styles.btn} onClick={handleNo}>No</button>
-                    <button disabled={loading} className={styles.btn} onClick={handleYes}>Yes</button>
+                    {outcome ? <>
+                        <button disabled={loading} className={styles.btn} onClick={handleOutcome}>Ok</button>
+                    </> : <>
+                        <button disabled={loading} className={styles.btn} onClick={handleNo}>No</button>
+                        <button disabled={loading} className={styles.btn} onClick={handleYes}>Yes</button>
+                    </>}
                 </div>
             </div>
 
@@ -85,7 +114,7 @@ const App = observer(() => {
                 <ProgressIcon value={state.staff} icon={<Staff/>}/>
                 <ProgressIcon value={state.fame} icon={<Fame/>}/>
             </div>
-        </>
+        </div>
     )
 });
 

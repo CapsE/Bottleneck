@@ -6,7 +6,7 @@ import {application} from "./initialize.js";
 import * as path from "node:path";
 import {ObjectId} from "mongodb";
 
-const generationChance = 50;
+const generationChance = (process.env.GENERATION_CHANCE || process.env.GENERATION_CHANCE === 0) ? process.env.GENERATION_CHANCE : 10;
 
 application.onReady(() => {
     const app = express();
