@@ -10,6 +10,7 @@ import Staff from './icons/person.svg?react';
 import Fame from './icons/star-struck.svg?react';
 
 import {state} from './state';
+import {imageDescriptions} from "./imageList.js";
 
 const App = observer(() => {
     const active = state.active;
@@ -27,7 +28,7 @@ const App = observer(() => {
     return (
         <>
             <h1>{active.title}</h1>
-            <img className={styles.image} src={evilCowboy} />
+            <img className={styles.image} src={imageDescriptions[active.image || 'default']} />
             <p>{active.description}</p>
             <button onClick={handleYes}>Yes</button>
             <button onClick={handleNo}>No</button>

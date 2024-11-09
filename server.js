@@ -1,11 +1,12 @@
+import 'dotenv/config';
 import express from 'express';
 import {MongoClient} from 'mongodb';
 import cors from 'cors';
 
 const app = express();
-const PORT = 3000;
-const mongoUri = 'mongodb://localhost:27017';
-const dbName = 'bottleneck'; // Replace with your actual database name
+const PORT = process.env.PORT || 3000;
+const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017';
+const dbName = process.env.DB_NAME || 'bottleneck';
 let db;
 
 // Connect to MongoDB

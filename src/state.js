@@ -11,6 +11,7 @@ class State {
         this.history = [];
         this.getEvent().then((event) => {
             this.active = event;
+            this.history.push(this.active.id);
         });
         makeAutoObservable(this);
     }
