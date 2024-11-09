@@ -30,8 +30,11 @@ const App = observer(() => {
             <h1>{active.title}</h1>
             <img className={styles.image} src={`http://localhost:3000/images/${imageId}.png`} />
             <p>{active.description}</p>
-            <button onClick={handleYes}>Yes</button>
-            <button onClick={handleNo}>No</button>
+            <div className={styles.btnWrapper}>
+                <button className={styles.btn} onClick={handleNo}>No</button>
+                <button className={styles.btn} onClick={handleYes}>Yes</button>
+            </div>
+
             <div className={styles.iconWrapper}>
                 <ProgressIcon value={state.money} icon={<Money />} />
                 <ProgressIcon value={state.law} icon={<Law />} />

@@ -1,9 +1,35 @@
 .iconWrapper {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 1rem 0;
     display: flex;
     justify-content: center;
     gap: 2rem;
+    background-color: #141517;
 }
 
 .image {
     max-width: 100%;
+}
+
+.btnWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.btn {
+    background-color: transparent;
+    border: solid 2px white;
+    border-radius: 50%;
+    width: 82px;
+    height: 82px;
+    color: white;
+    padding: .5rem 1rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

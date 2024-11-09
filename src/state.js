@@ -11,7 +11,7 @@ class State {
         this.history = [];
         this.getEvent().then((event) => {
             this.active = event;
-            this.history.push(this.active.id);
+            this.history.push(this.active);
         });
         makeAutoObservable(this);
     }
@@ -28,6 +28,7 @@ class State {
     }
 
     async getEvent(){
+        console.log(this.history);
         const historyIds = this.history.map(item => item._id);
         const res = await fetch(`http://localhost:3000/random-event?excludedIds=${JSON.stringify(historyIds)}`);
         const json = await res.json();

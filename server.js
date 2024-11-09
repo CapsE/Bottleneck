@@ -22,7 +22,7 @@ application.onReady(() => {
 
     app.get('/random-event', async (req, res) => {
         let excludedIds = req.query.excludedIds ? JSON.parse(req.query.excludedIds) : [];
-        excludedIds = excludedIds.map((id) => ObjectId(id));
+        excludedIds = excludedIds.map((id) => new ObjectId(id));
 
         try {
             const r = Math.random() * 100;
