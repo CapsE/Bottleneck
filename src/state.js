@@ -24,11 +24,12 @@ class State {
 
     async next() {
         this.active = await this.getEvent();
-        this.history.push(this.active.id);
+        this.history.push(this.active);
     }
 
     async getEvent(){
-        const res = await fetch(`http://localhost:3000/random-event?excludedIds=${JSON.stringify(this.history)}`);
+        const historyIds = this.history.map(item => item._id);
+        const res = await fetch(`http://localhost:3000/random-event?excludedIds=${JSON.stringify(historyIds)}`);
         const json = await res.json();
         return json;
     }

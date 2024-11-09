@@ -4,6 +4,9 @@ import cors from 'cors';
 import {getFromChatGPT} from "./getFromChatGPT.js";
 import {application} from "./initialize.js";
 import * as path from "node:path";
+import {ObjectId} from "mongodb";
+
+const generationChance = 50;
 
 application.onReady(() => {
     const app = express();
@@ -18,12 +21,20 @@ application.onReady(() => {
     app.use(express.json());
 
     app.get('/random-event', async (req, res) => {
-        const excludedIds = req.query.excludedIds ? JSON.parse(req.query.excludedIds) : [];
+        let excludedIds = req.query.excludedIds ? JSON.parse(req.query.excludedIds) : [];
+        excludedIds = excludedIds.map((id) => ObjectId(id));
 
         try {
+            const r = Math.random() * 100;
+            if(r <= generationChance) {
+                const json = await getFromChatGPT("write a basic event for the game");
+                await application.db.collection('event').insertOne(json);
+                res.json(json);
+                return;
+            }
             // Aggregate to find a random event not in excludedIds
-            const result = await db.collection('event').aggregate([
-                {$match: {id: {$nin: excludedIds}}},
+            const result = await application.db.collection('event').aggregate([
+                {$match: {_id: {$nin: excludedIds}}},
                 {$sample: {size: 1}}
             ]).toArray();
 
@@ -39,9 +50,9 @@ application.onReady(() => {
         }
     });
 
-    app.get('/test', async (req, res) => {
-        res.json(await getFromChatGPT("write a basic event for the game"));
-    });
+    // app.get('/test', async (req, res) => {
+    //     res.json(await getFromChatGPT("write a basic event for the game"));
+    // });
 
     app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}`);
