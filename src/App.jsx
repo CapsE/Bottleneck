@@ -12,10 +12,20 @@ import {state} from './state';
 import {imageDescriptions} from "./imageList.js";
 import {useRef, useState} from "react";
 
-const GameOver = ({message}) => <>
-    <h1>Game Over</h1>
-    <p>{message}</p>
-</>
+const GameOver = ({message}) => <div className={styles.app}>
+    <div className={styles.hidden}>
+        <audio ref={audioRef} loop={true}>
+            <source src="/TheEntertainer.ogg" type="audio/ogg"/>
+        </audio>
+    </div>
+    <div className={styles.menu}>
+        <Music onClick={toggleMusic}/>
+    </div>
+    <div className={styles.content}>
+        <h1>Game Over</h1>
+        <p>{message}</p>
+    </div>
+</div>
 
 const App = observer(() => {
     const [loading, setLoading] = useState(false);
@@ -61,28 +71,28 @@ const App = observer(() => {
     imageId = imageId === -1 ? 0 : imageId;
 
     if (state.fame <= 0) {
-        return <GameOver message="Too little fame" />
+        return <GameOver message="Your saloon is famous but for all the wrong reasons. People make sure to keep away from it forcing you to close." />
     }
     if (state.fame >= 100) {
-        return <GameOver message="Too much fame" />
+        return <GameOver message="Your saloon is known all around the country and you can't manage all the customers any longer and decide to close." />
     }
     if (state.staff <= 0) {
-        return <GameOver message="Too much staff" />
+        return <GameOver message="Your staff has had enough and they all quit leaving you with no choice but to close the saloon." />
     }
     if (state.staff >= 100) {
-        return <GameOver message="Too much staff" />
+        return <GameOver message="Your staff earned a lot of money working for you and with all the experience they gathered they decide to persue their own dreams leaving you so understaffed you have to close." />
     }
     if (state.money <= 0) {
-        return <GameOver message="Too little money" />
+        return <GameOver message="Even the most loyal among you staff won't work without pay and you can't even pay for supplies right now and have to close." />
     }
     if (state.money >= 100) {
-        return <GameOver message="Too much money" />
+        return <GameOver message="Word of your fortune has spread to the wrong people and an outlaw steals all your money leaving you with nothing." />
     }
     if (state.law <= 0) {
-        return <GameOver message="Too little law" />
+        return <GameOver message="Your saloon has become the meeting point of the most vicious gangs keeping away the locals. Since the outlaws are not in the habit of paying their bills you have to close." />
     }
     if (state.law >= 100) {
-        return <GameOver message="Too much law" />
+        return <GameOver message="Your saloon is a shining beacon of law and order... which keeps away all customers except the sherrif and you have to close." />
     }
     return (
         <div className={styles.app}>
