@@ -1,3 +1,8 @@
+.content {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
 .iconWrapper {
     position: fixed;
     left: 0;
@@ -18,6 +23,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
+    margin-bottom: 3rem;
 }
 
 .btn {
@@ -32,4 +38,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.btn:disabled {
+    opacity: 0.2;
 }

@@ -17,6 +17,7 @@ application.onReady(() => {
     }));
 
     app.use(express.static(path.join(application.__dirname, 'public')));
+    app.use(express.static(path.join(application.__dirname, 'dist')));
 
     app.use(express.json());
 
@@ -54,7 +55,7 @@ application.onReady(() => {
     //     res.json(await getFromChatGPT("write a basic event for the game"));
     // });
 
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
         console.log(`Server running on http://localhost:${PORT}`);
     });
 });

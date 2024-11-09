@@ -30,7 +30,7 @@ class State {
     async getEvent(){
         console.log(this.history);
         const historyIds = this.history.map(item => item._id);
-        const res = await fetch(`http://localhost:3000/random-event?excludedIds=${JSON.stringify(historyIds)}`);
+        const res = await fetch(`/random-event?excludedIds=${JSON.stringify(historyIds)}`);
         const json = await res.json();
         return json;
     }
