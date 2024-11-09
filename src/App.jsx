@@ -1,5 +1,3 @@
-import {useState} from 'react'
-import evilCowboy from './assets/evil-cowboy.png';
 import styles from './App.module.css';
 import {ProgressIcon} from './components/progress-icon';
 import {observer} from 'mobx-react-lite';
@@ -25,10 +23,12 @@ const App = observer(() => {
         state.next();
     }
 
+    let imageId = imageDescriptions.indexOf(active.image);
+    imageId = imageId === -1 ? 0 : imageId;
     return (
         <>
             <h1>{active.title}</h1>
-            <img className={styles.image} src={imageDescriptions[active.image || 'default']} />
+            <img className={styles.image} src={`http://localhost:3000/images/${imageId}.png`} />
             <p>{active.description}</p>
             <button onClick={handleYes}>Yes</button>
             <button onClick={handleNo}>No</button>

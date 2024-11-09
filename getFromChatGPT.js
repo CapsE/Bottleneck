@@ -1,19 +1,9 @@
 import 'dotenv/config';
-import fs from "fs";
 import OpenAI from "openai";
+import {application} from "./initialize.js";
 const openai = new OpenAI({
     // eslint-disable-next-line no-undef
     apiKey: process.env.OPENAI_API_KEY,
-});
-
-let systemMessage;
-
-fs.readFile('./chat-gpt.system', 'utf8', (err, data) => {
-    if (err) {
-        console.error(err);
-        return;
-    }
-    systemMessage = data;
 });
 
 export const getFromChatGPT = async (prompt) => {
@@ -21,7 +11,7 @@ export const getFromChatGPT = async (prompt) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4o",
             messages: [
-                {"role": "system", "content": systemMessage},
+                {"role": "system", "content": application.systemMessage},
                 {"role": "user", "content": prompt}
             ]
         });
