@@ -10,10 +10,9 @@ import Staff from './icons/person.svg?react';
 import Fame from './icons/star-struck.svg?react';
 
 import {state} from './state';
-import story from './story.json';
 
 const App = observer(() => {
-    const active = story[state.active];
+    const active = state.active;
 
     const handleYes = () => {
         state.updateValues(active.yes);

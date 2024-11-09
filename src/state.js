@@ -1,14 +1,17 @@
 import { makeAutoObservable } from "mobx";
-import story from './story.json';
 
 class State {
     constructor() {
-        this.active = 0;
+        this.active = {};
         this.law = 50;
         this.money = 50;
         this.fame = 50;
         this.staff = 50;
 
+        this.history = [];
+        this.getEvent().then((event) => {
+            this.active = event;
+        });
         makeAutoObservable(this);
     }
 
@@ -18,11 +21,15 @@ class State {
         });
     }
 
-    next() {
-        this.active++;
-        if(this.active >= story.length) {
-            this.active = 0;
-        }
+    async next() {
+        this.active = await this.getEvent();
+        this.history.push(this.active.id);
+    }
+
+    async getEvent(){
+        const res = await fetch(`http://localhost:3000/random-event?excludedIds=${JSON.stringify(this.history)}`);
+        const json = await res.json();
+        return json;
     }
 }
 
