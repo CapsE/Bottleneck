@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx";
 class State {
     constructor() {
         this.active = {};
-        this.law = 50;
+        this.law = 100;
         this.money = 50;
         this.fame = 50;
         this.staff = 50;

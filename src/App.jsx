@@ -13,14 +13,6 @@ import {imageDescriptions} from "./imageList.js";
 import {useRef, useState} from "react";
 
 const GameOver = ({message}) => <div className={styles.app}>
-    <div className={styles.hidden}>
-        <audio ref={audioRef} loop={true}>
-            <source src="/TheEntertainer.ogg" type="audio/ogg"/>
-        </audio>
-    </div>
-    <div className={styles.menu}>
-        <Music onClick={toggleMusic}/>
-    </div>
     <div className={styles.content}>
         <h1>Game Over</h1>
         <p>{message}</p>
