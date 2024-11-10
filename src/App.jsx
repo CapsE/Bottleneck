@@ -23,6 +23,7 @@ const App = observer(() => {
     const [loading, setLoading] = useState(false);
     const [outcome, setOutcome] = useState(null);
     const [lastImage, setLastImage] = useState(null);
+    const [lastTitle, setLastTitle] = useState(null);
     const audioRef = useRef();
     const active = state.active;
 
@@ -30,6 +31,7 @@ const App = observer(() => {
         state.updateValues(active.yes);
         setOutcome(active.yesDescription);
         setLastImage(active.image);
+        setLastTitle(active.title);
         setLoading(true);
         state.next().then(() => {
             setLoading(false);
@@ -40,6 +42,7 @@ const App = observer(() => {
         state.updateValues(active.no);
         setOutcome(active.noDescription);
         setLastImage(active.image);
+        setLastTitle(active.title);
         setLoading(true);
         state.next().then(() => {
             setLoading(false);
@@ -97,7 +100,7 @@ const App = observer(() => {
                 <Music onClick={toggleMusic}/>
             </div>
             <div className={styles.content}>
-                <h1>{active.title}</h1>
+                <h1>{outcome ? lastTitle : active.title}</h1>
                 <img className={styles.image} src={`/images/${imageId}.png`}/>
                 <p>{outcome ? outcome : active.description}</p>
                 <div className={styles.btnWrapper}>
